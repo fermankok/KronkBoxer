@@ -1,1 +1,9 @@
 C:\Users\Alec\Google Drive\Projects\KronkBoxer\KronkBoxer\bin\Debug\KronkBoxer.exe.config
+C:\Users\Alec\Google Drive\Projects\KronkBoxer\KronkBoxer\bin\Debug\KronkBoxer.exe
+C:\Users\Alec\Google Drive\Projects\KronkBoxer\KronkBoxer\bin\Debug\KronkBoxer.pdb
+C:\Users\Alec\Google Drive\Projects\KronkBoxer\KronkBoxer\obj\Debug\KronkBoxer.csprojResolveAssemblyReference.cache
+C:\Users\Alec\Google Drive\Projects\KronkBoxer\KronkBoxer\obj\Debug\KronkBoxer.Properties.Resources.resources
+C:\Users\Alec\Google Drive\Projects\KronkBoxer\KronkBoxer\obj\Debug\KronkBoxer.csproj.GenerateResource.Cache
+C:\Users\Alec\Google Drive\Projects\KronkBoxer\KronkBoxer\obj\Debug\KronkBoxer.exe
+C:\Users\Alec\Google Drive\Projects\KronkBoxer\KronkBoxer\obj\Debug\KronkBoxer.pdb
+C:\Users\Alec\Google Drive\Projects\KronkBoxer\KronkBoxer\obj\Debug\KronkBoxer.FrmMain.resources
