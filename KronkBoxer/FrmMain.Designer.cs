@@ -35,6 +35,9 @@
             this.splitBottom = new System.Windows.Forms.SplitContainer();
             this.stsBottom = new System.Windows.Forms.StatusStrip();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.chkAutoTeleport = new System.Windows.Forms.CheckBox();
+            this.btnConfigKeys = new System.Windows.Forms.Button();
+            this.tbxMainPlayer = new System.Windows.Forms.TextBox();
             this.tbxClientPath = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnClientBrowse = new System.Windows.Forms.Button();
@@ -45,10 +48,7 @@
             this.lblPerformance = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.tmrChecker = new System.Windows.Forms.Timer(this.components);
-            this.tbxMainPlayer = new System.Windows.Forms.TextBox();
-            this.btnConfigKeys = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.tmrTeleport = new System.Windows.Forms.Timer(this.components);
+            this.lblTPCountdown = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -130,7 +130,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeader.BackColor = System.Drawing.Color.Gray;
             this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlHeader.Controls.Add(this.checkBox1);
+            this.pnlHeader.Controls.Add(this.lblTPCountdown);
+            this.pnlHeader.Controls.Add(this.chkAutoTeleport);
             this.pnlHeader.Controls.Add(this.btnConfigKeys);
             this.pnlHeader.Controls.Add(this.tbxMainPlayer);
             this.pnlHeader.Controls.Add(this.tbxClientPath);
@@ -145,6 +146,45 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(786, 39);
             this.pnlHeader.TabIndex = 2;
+            // 
+            // chkAutoTeleport
+            // 
+            this.chkAutoTeleport.AutoSize = true;
+            this.chkAutoTeleport.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.chkAutoTeleport.Location = new System.Drawing.Point(162, 3);
+            this.chkAutoTeleport.Name = "chkAutoTeleport";
+            this.chkAutoTeleport.Size = new System.Drawing.Size(113, 19);
+            this.chkAutoTeleport.TabIndex = 9;
+            this.chkAutoTeleport.Text = "Auto teleport to:";
+            this.chkAutoTeleport.UseVisualStyleBackColor = true;
+            this.chkAutoTeleport.CheckedChanged += new System.EventHandler(this.chkAutoTeleport_CheckedChanged);
+            // 
+            // btnConfigKeys
+            // 
+            this.btnConfigKeys.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnConfigKeys.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnConfigKeys.FlatAppearance.BorderSize = 0;
+            this.btnConfigKeys.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfigKeys.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfigKeys.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnConfigKeys.Image = ((System.Drawing.Image)(resources.GetObject("btnConfigKeys.Image")));
+            this.btnConfigKeys.Location = new System.Drawing.Point(565, 3);
+            this.btnConfigKeys.Name = "btnConfigKeys";
+            this.btnConfigKeys.Size = new System.Drawing.Size(39, 31);
+            this.btnConfigKeys.TabIndex = 8;
+            this.btnConfigKeys.TabStop = false;
+            this.btnConfigKeys.UseVisualStyleBackColor = false;
+            this.btnConfigKeys.Click += new System.EventHandler(this.btnConfigKeys_Click);
+            // 
+            // tbxMainPlayer
+            // 
+            this.tbxMainPlayer.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxMainPlayer.Location = new System.Drawing.Point(275, 3);
+            this.tbxMainPlayer.Name = "tbxMainPlayer";
+            this.tbxMainPlayer.Size = new System.Drawing.Size(87, 18);
+            this.tbxMainPlayer.TabIndex = 7;
+            this.tbxMainPlayer.TabStop = false;
+            this.tbxMainPlayer.Text = "PlayerName";
             // 
             // tbxClientPath
             // 
@@ -275,41 +315,17 @@
             this.tmrChecker.Interval = 1000;
             this.tmrChecker.Tick += new System.EventHandler(this.tmrChecker_Tick);
             // 
-            // tbxMainPlayer
+            // lblTPCountdown
             // 
-            this.tbxMainPlayer.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxMainPlayer.Location = new System.Drawing.Point(275, 10);
-            this.tbxMainPlayer.Name = "tbxMainPlayer";
-            this.tbxMainPlayer.Size = new System.Drawing.Size(87, 18);
-            this.tbxMainPlayer.TabIndex = 7;
-            this.tbxMainPlayer.TabStop = false;
-            this.tbxMainPlayer.Text = "PlayerName";
-            // 
-            // btnConfigKeys
-            // 
-            this.btnConfigKeys.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnConfigKeys.FlatAppearance.BorderSize = 0;
-            this.btnConfigKeys.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfigKeys.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfigKeys.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnConfigKeys.Image = ((System.Drawing.Image)(resources.GetObject("btnConfigKeys.Image")));
-            this.btnConfigKeys.Location = new System.Drawing.Point(565, 3);
-            this.btnConfigKeys.Name = "btnConfigKeys";
-            this.btnConfigKeys.Size = new System.Drawing.Size(39, 31);
-            this.btnConfigKeys.TabIndex = 8;
-            this.btnConfigKeys.TabStop = false;
-            this.btnConfigKeys.UseVisualStyleBackColor = false;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.checkBox1.Location = new System.Drawing.Point(162, 10);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(113, 19);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "Auto teleport to:";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.lblTPCountdown.AutoSize = true;
+            this.lblTPCountdown.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblTPCountdown.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblTPCountdown.Location = new System.Drawing.Point(161, 19);
+            this.lblTPCountdown.Name = "lblTPCountdown";
+            this.lblTPCountdown.Size = new System.Drawing.Size(105, 15);
+            this.lblTPCountdown.TabIndex = 10;
+            this.lblTPCountdown.Text = "Teleporting in 10...";
+            this.lblTPCountdown.Visible = false;
             // 
             // FrmMain
             // 
@@ -365,8 +381,8 @@
         private System.Windows.Forms.Timer tmrChecker;
         private System.Windows.Forms.Button btnConfigKeys;
         private System.Windows.Forms.TextBox tbxMainPlayer;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Timer tmrTeleport;
+        private System.Windows.Forms.CheckBox chkAutoTeleport;
+        private System.Windows.Forms.Label lblTPCountdown;
 
 
     }

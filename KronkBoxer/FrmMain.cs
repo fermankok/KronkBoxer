@@ -15,7 +15,7 @@ namespace KronkBoxer
 {
     public partial class FrmMain : Form
     {
-        public List<Keys> keysToSend = new List<Keys>() { Keys.W, Keys.A, Keys.S, Keys.D, Keys.Enter, Keys.Q, Keys.E, Keys.R };
+        public List<Keys> keysToSend = new List<Keys>();
         public List<Panel> panels = new List<Panel>();
         public List<Client> clients = new List<Client>();
         public int running = 0; //0 = stopped, 1 = running, 2 = paused
@@ -33,6 +33,11 @@ namespace KronkBoxer
             //Load config
             numClients.Value = Config.Default.numClients;
             tbxClientPath.Text = Config.Default.clientPath;
+            tbxMainPlayer.Text = Config.Default.mainPlayer;
+            
+            foreach (string s in Config.Default.keysToSend.Split(','))
+                if (s.Length > 0)
+                    keysToSend.Add((Keys)Enum.Parse(typeof(Keys), s));
         }
       
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -69,6 +74,12 @@ namespace KronkBoxer
 
             Config.Default.numClients = (int)numClients.Value;
             Config.Default.clientPath = tbxClientPath.Text;
+            Config.Default.mainPlayer = tbxMainPlayer.Text;
+            string temp = "";
+            foreach (Keys key in keysToSend)
+                temp += key.ToString() + ",";
+            Config.Default.keysToSend = temp;
+
             Config.Default.Save();
         }
 
@@ -130,20 +141,38 @@ namespace KronkBoxer
 
         private PerformanceCounter perfCPU =
             new PerformanceCounter("Processor", "% Processor Time", "_Total");
+        int autoTP = 10;
 
         private void tmrChecker_Tick(object sender, EventArgs e)
         {
+            //Performance
             lblPerformance.Text = "CPU " + (int)perfCPU.NextValue() + "%  |  RAM: ";
 
             for (int i = 0; i < clients.Count; i++)
             {
                 if (!clients[i].clientProcess.HasExited)
                 {
-                    lblPerformance.Text += "[" + i + "] " + clients[i].clientProcess.PeakWorkingSet64 / 1024 / 1024 + "mb   :   ";
+                    lblPerformance.Text += "[" + i + "] " + clients[i].clientProcess.PagedMemorySize64 / 1024 / 1024 + "mb   :   ";
                 }
             }
 
             lblPerformance.Location = new Point(this.Width - 50 - lblPerformance.Size.Width, lblPerformance.Location.Y);
+
+            //Auto TP
+            if (chkAutoTeleport.Checked && running == 1)
+            {
+                autoTP--;
+
+                lblTPCountdown.Text = "Teleporting in " + autoTP + "...";
+
+                if (autoTP == 0)
+                {
+                    autoTP = 11;
+
+                    foreach (Client c in clients)
+                        Native.SendString(c.clientProcess, "/teleport " + tbxMainPlayer.Text);
+                }
+            }
         }
 
         private void FrmMain_KeyPress(object sender, KeyPressEventArgs e)
@@ -164,6 +193,40 @@ namespace KronkBoxer
         {
             foreach (Client c in clients)
                 Native.SendString(c.clientProcess, "poop");
+        }
+
+        private void chkAutoTeleport_CheckedChanged(object sender, EventArgs e)
+        {
+            lblTPCountdown.Visible = chkAutoTeleport.Checked;
+            autoTP = 11;
+        }
+
+        private void btnConfigKeys_Click(object sender, EventArgs e)
+        {
+            string input = Microsoft.VisualBasic.Interaction.InputBox("Please enter the names of any keys, seperated by commas, to be broadcasted to all clients when pressed.\n", "KronkBoxer Key Config", Config.Default.keysToSend, -1, -1);
+
+            if (input != "")
+            {
+                try
+                {
+                    foreach (string s in input.Split(','))
+                        if (s.Length > 0)
+                            Enum.Parse(typeof(Keys), s);
+                }
+                catch
+                {
+                    MessageBox.Show("Input was invalid.\nPlease make sure you're using only valid names of keys and are seperating them with commas (NO SPACES).\n\nFor a list of key names, please refer to http://msdn.microsoft.com/en-us/library/system.windows.forms.keys.aspx", "KronkBoxer Key Config");
+                    return;
+                }
+                Config.Default.keysToSend = input;
+                Config.Default.Save();
+
+                keysToSend.Clear();
+
+                foreach (string s in Config.Default.keysToSend.Split(','))
+                    if (s.Length > 0)
+                        keysToSend.Add((Keys)Enum.Parse(typeof(Keys), s));
+            }
         }
     }
 }
