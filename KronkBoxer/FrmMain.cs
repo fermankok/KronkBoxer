@@ -107,9 +107,22 @@ namespace KronkBoxer
 
                 int count = (int)numClients.Value;
 
-                for (int i = 0; i < count; i++)
+                try
                 {
-                    clients.Add(new Client(panels[i], tbxClientPath.Text));
+                    for (int i = 0; i < count; i++)
+                    {
+                        clients.Add(new Client(panels[i], tbxClientPath.Text));
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("You have not set .SWF files to open with Flash Player Projector.\nPlease download it from here:\nhttp://download.macromedia.com/pub/flashplayer/updaters/14/flashplayer_14_sa.exe\nAnd then set it to open with flashplayer_14_sa by right clicking your client and clicking Open With.");
+                    clients.Clear();
+
+                    btnToggle.ImageIndex = 0;
+                    btnToggle.BackColor = Color.FromArgb(60, 170, 60);
+
+                    return;
                 }
 
                 running = 1;

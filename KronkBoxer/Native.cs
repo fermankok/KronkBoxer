@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Threading;
+using Microsoft.Win32;
 
 namespace KronkBoxer
 {
@@ -96,6 +97,38 @@ namespace KronkBoxer
             PostMessage(p.MainWindowHandle, WM_KEYDOWN, ((IntPtr)Keys.Enter), (IntPtr)0);
             Thread.Sleep(1);
             PostMessage(p.MainWindowHandle, WM_KEYUP, ((IntPtr)Keys.Enter), (IntPtr)0);
+        }
+
+        public static IEnumerable<string> RecommendedPrograms(string ext)
+        {
+            List<string> progs = new List<string>();
+
+            string baseKey = @"Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\." + ext;
+
+            using (RegistryKey rk = Registry.CurrentUser.OpenSubKey(baseKey + @"\OpenWithList"))
+            {
+                if (rk != null)
+                {
+                    string mruList = (string)rk.GetValue("MRUList");
+                    if (mruList != null)
+                    {
+                        foreach (char c in mruList.ToString())
+                        if(rk.GetValue(c.ToString())!=null)
+                            progs.Add(rk.GetValue(c.ToString()).ToString());
+                    }
+                }
+            }
+
+            using (RegistryKey rk = Registry.CurrentUser.OpenSubKey(baseKey + @"\OpenWithProgids"))
+            {
+                if (rk != null)
+                {
+                    foreach (string item in rk.GetValueNames())
+                        progs.Add(item);
+                }
+            }
+
+            return progs;
         }
     }
 }
