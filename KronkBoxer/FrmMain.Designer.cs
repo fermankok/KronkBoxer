@@ -45,6 +45,10 @@
             this.lblPerformance = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.tmrChecker = new System.Windows.Forms.Timer(this.components);
+            this.tbxMainPlayer = new System.Windows.Forms.TextBox();
+            this.btnConfigKeys = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.tmrTeleport = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -74,8 +78,8 @@
             // splitMain.Panel2
             // 
             this.splitMain.Panel2.Controls.Add(this.splitBottom);
-            this.splitMain.Size = new System.Drawing.Size(1264, 620);
-            this.splitMain.SplitterDistance = 307;
+            this.splitMain.Size = new System.Drawing.Size(784, 500);
+            this.splitMain.SplitterDistance = 247;
             this.splitMain.TabIndex = 0;
             // 
             // splitTop
@@ -91,8 +95,8 @@
             // splitTop.Panel2
             // 
             this.splitTop.Panel2.BackColor = System.Drawing.Color.Gainsboro;
-            this.splitTop.Size = new System.Drawing.Size(1264, 307);
-            this.splitTop.SplitterDistance = 630;
+            this.splitTop.Size = new System.Drawing.Size(784, 247);
+            this.splitTop.SplitterDistance = 390;
             this.splitTop.TabIndex = 3;
             // 
             // splitBottom
@@ -108,15 +112,15 @@
             // splitBottom.Panel2
             // 
             this.splitBottom.Panel2.BackColor = System.Drawing.Color.DarkGray;
-            this.splitBottom.Size = new System.Drawing.Size(1264, 309);
-            this.splitBottom.SplitterDistance = 630;
+            this.splitBottom.Size = new System.Drawing.Size(784, 249);
+            this.splitBottom.SplitterDistance = 390;
             this.splitBottom.TabIndex = 4;
             // 
             // stsBottom
             // 
-            this.stsBottom.Location = new System.Drawing.Point(0, 659);
+            this.stsBottom.Location = new System.Drawing.Point(0, 539);
             this.stsBottom.Name = "stsBottom";
-            this.stsBottom.Size = new System.Drawing.Size(1264, 22);
+            this.stsBottom.Size = new System.Drawing.Size(784, 22);
             this.stsBottom.TabIndex = 1;
             this.stsBottom.Text = "statusStrip1";
             // 
@@ -126,26 +130,31 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeader.BackColor = System.Drawing.Color.Gray;
             this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHeader.Controls.Add(this.checkBox1);
+            this.pnlHeader.Controls.Add(this.btnConfigKeys);
+            this.pnlHeader.Controls.Add(this.tbxMainPlayer);
             this.pnlHeader.Controls.Add(this.tbxClientPath);
             this.pnlHeader.Controls.Add(this.label2);
             this.pnlHeader.Controls.Add(this.btnClientBrowse);
             this.pnlHeader.Controls.Add(this.numClients);
             this.pnlHeader.Controls.Add(this.btnPause);
             this.pnlHeader.Controls.Add(this.btnToggle);
+            this.pnlHeader.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.pnlHeader.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.pnlHeader.Location = new System.Drawing.Point(-1, -1);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1266, 39);
+            this.pnlHeader.Size = new System.Drawing.Size(786, 39);
             this.pnlHeader.TabIndex = 2;
             // 
             // tbxClientPath
             // 
             this.tbxClientPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbxClientPath.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxClientPath.Location = new System.Drawing.Point(1087, 3);
+            this.tbxClientPath.Location = new System.Drawing.Point(607, 3);
             this.tbxClientPath.Name = "tbxClientPath";
             this.tbxClientPath.Size = new System.Drawing.Size(174, 18);
             this.tbxClientPath.TabIndex = 4;
-            this.tbxClientPath.Text = "C:/Users/Alec/Desktop/rotmg.swf";
+            this.tbxClientPath.TabStop = false;
             // 
             // label2
             // 
@@ -153,7 +162,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label2.Location = new System.Drawing.Point(1085, 21);
+            this.label2.Location = new System.Drawing.Point(605, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 15);
             this.label2.TabIndex = 6;
@@ -168,13 +177,15 @@
             this.btnClientBrowse.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClientBrowse.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnClientBrowse.ImageIndex = 0;
-            this.btnClientBrowse.Location = new System.Drawing.Point(1196, 14);
+            this.btnClientBrowse.Location = new System.Drawing.Point(716, 14);
             this.btnClientBrowse.Name = "btnClientBrowse";
             this.btnClientBrowse.Size = new System.Drawing.Size(64, 20);
             this.btnClientBrowse.TabIndex = 5;
+            this.btnClientBrowse.TabStop = false;
             this.btnClientBrowse.Text = "Browse";
             this.btnClientBrowse.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnClientBrowse.UseVisualStyleBackColor = false;
+            this.btnClientBrowse.Click += new System.EventHandler(this.btnClientBrowse_Click);
             // 
             // numClients
             // 
@@ -188,6 +199,7 @@
             this.numClients.Name = "numClients";
             this.numClients.Size = new System.Drawing.Size(43, 32);
             this.numClients.TabIndex = 3;
+            this.numClients.TabStop = false;
             this.numClients.Value = new decimal(new int[] {
             4,
             0,
@@ -206,6 +218,7 @@
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(39, 31);
             this.btnPause.TabIndex = 1;
+            this.btnPause.TabStop = false;
             this.btnPause.UseVisualStyleBackColor = false;
             this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
@@ -222,6 +235,7 @@
             this.btnToggle.Name = "btnToggle";
             this.btnToggle.Size = new System.Drawing.Size(64, 31);
             this.btnToggle.TabIndex = 0;
+            this.btnToggle.TabStop = false;
             this.btnToggle.UseVisualStyleBackColor = false;
             this.btnToggle.Click += new System.EventHandler(this.btnToggle_Click);
             // 
@@ -237,7 +251,7 @@
             this.lblPerformance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPerformance.AutoSize = true;
             this.lblPerformance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerformance.Location = new System.Drawing.Point(1127, 663);
+            this.lblPerformance.Location = new System.Drawing.Point(647, 543);
             this.lblPerformance.Name = "lblPerformance";
             this.lblPerformance.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblPerformance.Size = new System.Drawing.Size(115, 15);
@@ -249,7 +263,7 @@
             this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(0, 663);
+            this.lblStatus.Location = new System.Drawing.Point(0, 543);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(51, 15);
             this.lblStatus.TabIndex = 3;
@@ -261,11 +275,47 @@
             this.tmrChecker.Interval = 1000;
             this.tmrChecker.Tick += new System.EventHandler(this.tmrChecker_Tick);
             // 
+            // tbxMainPlayer
+            // 
+            this.tbxMainPlayer.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxMainPlayer.Location = new System.Drawing.Point(275, 10);
+            this.tbxMainPlayer.Name = "tbxMainPlayer";
+            this.tbxMainPlayer.Size = new System.Drawing.Size(87, 18);
+            this.tbxMainPlayer.TabIndex = 7;
+            this.tbxMainPlayer.TabStop = false;
+            this.tbxMainPlayer.Text = "PlayerName";
+            // 
+            // btnConfigKeys
+            // 
+            this.btnConfigKeys.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnConfigKeys.FlatAppearance.BorderSize = 0;
+            this.btnConfigKeys.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfigKeys.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfigKeys.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnConfigKeys.Image = ((System.Drawing.Image)(resources.GetObject("btnConfigKeys.Image")));
+            this.btnConfigKeys.Location = new System.Drawing.Point(565, 3);
+            this.btnConfigKeys.Name = "btnConfigKeys";
+            this.btnConfigKeys.Size = new System.Drawing.Size(39, 31);
+            this.btnConfigKeys.TabIndex = 8;
+            this.btnConfigKeys.TabStop = false;
+            this.btnConfigKeys.UseVisualStyleBackColor = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.checkBox1.Location = new System.Drawing.Point(162, 10);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(113, 19);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "Auto teleport to:";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.lblPerformance);
             this.Controls.Add(this.stsBottom);
@@ -273,10 +323,12 @@
             this.Controls.Add(this.splitMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "FrmMain";
             this.Text = "KronkBoxer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmMain_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.splitMain.Panel1.ResumeLayout(false);
             this.splitMain.Panel2.ResumeLayout(false);
@@ -311,6 +363,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Timer tmrChecker;
+        private System.Windows.Forms.Button btnConfigKeys;
+        private System.Windows.Forms.TextBox tbxMainPlayer;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Timer tmrTeleport;
 
 
     }

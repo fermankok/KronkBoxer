@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KronkBoxer" GeneratedClassName="Config">
+  <Profiles />
+  <Settings>
+    <Setting Name="numClients" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="clientPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Choose client path...</Value>
+    </Setting>
+    <Setting Name="mainPlayer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PlayerName</Value>
+    </Setting>
+    <Setting Name="keysToSend" Type="System.String" Scope="User">
+      <Value Profile="(Default)">W,A,S,D,Q,E,R</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

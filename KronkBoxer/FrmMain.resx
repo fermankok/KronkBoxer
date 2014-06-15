@@ -121,13 +121,25 @@
     <value>17, 3</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnConfigKeys.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAFuSURBVFhH7ZUxSgNBFIa3TmURcgTJEcRDSIqcIIWlpb2leAILixRWFpJCPIBYWKUQSSFiLUFS
+        WFgEWf9v9j2J64YFQ2a3mA8++N/MZt6Lu2uyRCLRCvI878hDeS4vtiw96NXx5j35JGNDzx4DjEPZDGMG
+        WBS5ERYMsMqt7JrP8sjynoRdSX0iHywjmTUy1wCfoeYMzvJr6fFDeYBJeDCE8kyOLPfZFF2rj+U9Gcis
+        WaYJ9K0eyRkZlCdsOiyswoPB4fgmryyfSeBbUt/IV8tIZo3MNcBnqDmDs/zaXw98eYDotHKAud0u9sI/
+        Dyup5/LA8r7Mw4ZQPJV1z9Af2CzT+ACfksPw0fSavWvLlxJ8j1eR183rd8krR+aLVFI1QFTqBviQ/Nk3
+        kTPWUjdAuIebwBnFUdW0YoBlESu5k/47/l85Yx1LBpgWuRGmDDCQX6GMCz0Hfp+G8oXVSNBrGJo7WsAd
+        6b/b25Ie1jWRyLJvMtf2ybHFZBEAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="btnPause.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAALRJREFUWEft
-        yrEJAwEQxMDvv2k7GTYwHHIBP6HQ83r9+vzJPnKy33zJPnKy33zJPnKy33zJPnKy33zJPnKy33zJPnKy
-        33zJPnKy33zJPnKy33zJPnKy33zJPnKy33zJPnKy33zJPnKy33zJPnKy33zJPnKy33zJPnKy33zJPnKy
-        33zJPnKy33zJPnKy33zJPnKy33zJPnKy33zJPnKy33zJPnKy33zJPnKy33zJPnKyv148zxcf0Xjqzh4L
-        TwAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAACmSURBVFhH7cuxaUBREAPB33/TdjIoMCy+At6EYvU9z1N+/iEbc5Ld+SXZmJPszi/Jxpxkd35J
+        NuYku/NLsjEn2Z1fko05ye78kmzMSXbnl2RjTrI7vyQbc5Ld+SXZmJPszi/Jxpxkd35JNuYku/NLsjEn
+        2Z1fko05ye78kmzMSXbnl2RjTrI7vyQbc5Ld+SXZmJPszi/Jxpxkd35JNuYke57nj+/7BRqW+z0ygHAU
+        AAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="imlToggle.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -180,6 +192,9 @@
   </data>
   <metadata name="tmrChecker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>230, 3</value>
+  </metadata>
+  <metadata name="tmrTeleport.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>344, 3</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>

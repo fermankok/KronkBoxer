@@ -15,7 +15,7 @@ namespace KronkBoxer
 {
     public partial class FrmMain : Form
     {
-        static readonly List<Keys> keysToSend = new List<Keys>() { Keys.W, Keys.A, Keys.S, Keys.D };
+        public List<Keys> keysToSend = new List<Keys>() { Keys.W, Keys.A, Keys.S, Keys.D, Keys.Enter, Keys.Q, Keys.E, Keys.R };
         public List<Panel> panels = new List<Panel>();
         public List<Client> clients = new List<Client>();
         public int running = 0; //0 = stopped, 1 = running, 2 = paused
@@ -30,10 +30,16 @@ namespace KronkBoxer
             panels.Add(splitBottom.Panel1);
             panels.Add(splitBottom.Panel2);
             numClients.Maximum = panels.Count;
+            //Load config
+            numClients.Value = Config.Default.numClients;
+            tbxClientPath.Text = Config.Default.clientPath;
         }
       
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+                e.Handled = true;
+
             if (running == 1 && keysToSend.Contains(e.KeyCode))
             {
                 foreach (Client c in clients)
@@ -43,6 +49,9 @@ namespace KronkBoxer
         
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+                e.Handled = true;
+
             if (running == 1 && keysToSend.Contains(e.KeyCode))
             {
                 foreach (Client c in clients)
@@ -57,12 +66,22 @@ namespace KronkBoxer
                 if (!c.clientProcess.HasExited)
                     c.clientProcess.Kill();
             }
+
+            Config.Default.numClients = (int)numClients.Value;
+            Config.Default.clientPath = tbxClientPath.Text;
+            Config.Default.Save();
         }
 
         private void btnToggle_Click(object sender, EventArgs e)
         {
             if (running == 0) //start
             {
+                if (!File.Exists(tbxClientPath.Text))
+                {
+                    MessageBox.Show("Invalid file path chosen for the client to be used.", "KronkBoxer");
+                    return;
+                }
+
                 btnToggle.ImageIndex = 1;
                 btnToggle.BackColor = Color.FromArgb(220, 0, 0);
 
@@ -120,11 +139,31 @@ namespace KronkBoxer
             {
                 if (!clients[i].clientProcess.HasExited)
                 {
-                    lblPerformance.Text += "[" + i + "] " + clients[i].clientProcess.WorkingSet64 / 1024 / 1024 + "mb   :   ";
+                    lblPerformance.Text += "[" + i + "] " + clients[i].clientProcess.PeakWorkingSet64 / 1024 / 1024 + "mb   :   ";
                 }
             }
 
             lblPerformance.Location = new Point(this.Width - 50 - lblPerformance.Size.Width, lblPerformance.Location.Y);
+        }
+
+        private void FrmMain_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                e.Handled = true;
+        }
+
+        private void btnClientBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog FD = new OpenFileDialog();
+
+            if (FD.ShowDialog() == DialogResult.OK)
+                tbxClientPath.Text = FD.FileName;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (Client c in clients)
+                Native.SendString(c.clientProcess, "poop");
         }
     }
 }

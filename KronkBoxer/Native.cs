@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace KronkBoxer
 {
@@ -27,6 +28,7 @@ namespace KronkBoxer
 
         private const uint WM_KEYDOWN = 0x100;
         private const uint WM_KEYUP = 0x101;
+        private const uint WM_PASTE = 0x302;
 
         [DllImport("USER32.DLL")]
         public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
@@ -36,6 +38,12 @@ namespace KronkBoxer
 
         [DllImport("user32.dll")]
         public static extern IntPtr PostMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern bool SendMessage(IntPtr hWnd, int wMsg, uint wParam, uint lParam);
 
         [DllImport("user32.dll")]
         private static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
@@ -71,6 +79,23 @@ namespace KronkBoxer
         public static void SendDown(Process p, Keys k)
         {
             PostMessage(p.MainWindowHandle, WM_KEYDOWN, ((IntPtr)k), (IntPtr)0);
+        }
+
+        public static void SendString(Process p, string s)
+        {
+            PostMessage(p.MainWindowHandle, WM_KEYDOWN, ((IntPtr)Keys.Enter), (IntPtr)0);
+            Thread.Sleep(1);
+            PostMessage(p.MainWindowHandle, WM_KEYUP, ((IntPtr)Keys.Enter), (IntPtr)0);
+
+            foreach (char c in s)
+            {
+                Thread.Sleep(10);
+                SendMessage(p.MainWindowHandle, 258, (uint)c, 0U);  
+            }
+
+            PostMessage(p.MainWindowHandle, WM_KEYDOWN, ((IntPtr)Keys.Enter), (IntPtr)0);
+            Thread.Sleep(1);
+            PostMessage(p.MainWindowHandle, WM_KEYUP, ((IntPtr)Keys.Enter), (IntPtr)0);
         }
     }
 }
