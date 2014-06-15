@@ -57,6 +57,15 @@ namespace KronkBoxer
             if (e.KeyCode == Keys.Enter)
                 e.Handled = true;
 
+            if (e.KeyCode == (Keys)Enum.Parse(typeof(Keys), Config.Default.macroTPKey))
+            {
+                autoTP = 11;
+
+                foreach (Client c in clients)
+                    Native.SendString(c.clientProcess, "/teleport " + tbxMainPlayer.Text);
+            }
+
+
             if (running == 1 && keysToSend.Contains(e.KeyCode))
             {
                 foreach (Client c in clients)
@@ -141,7 +150,7 @@ namespace KronkBoxer
 
         private PerformanceCounter perfCPU =
             new PerformanceCounter("Processor", "% Processor Time", "_Total");
-        int autoTP = 10;
+        int autoTP = 0;
 
         private void tmrChecker_Tick(object sender, EventArgs e)
         {
@@ -159,13 +168,15 @@ namespace KronkBoxer
             lblPerformance.Location = new Point(this.Width - 50 - lblPerformance.Size.Width, lblPerformance.Location.Y);
 
             //Auto TP
-            if (chkAutoTeleport.Checked && running == 1)
-            {
+            
+            if (autoTP > 0)
                 autoTP--;
 
-                lblTPCountdown.Text = "Teleporting in " + autoTP + "...";
+            lblTPCountdown.Text = "Able to teleport in " + autoTP + "...";
 
-                if (autoTP == 0)
+            if (autoTP == 0)
+            {
+                if (chkAutoTeleport.Checked && running == 1)
                 {
                     autoTP = 11;
 
@@ -195,12 +206,6 @@ namespace KronkBoxer
                 Native.SendString(c.clientProcess, "poop");
         }
 
-        private void chkAutoTeleport_CheckedChanged(object sender, EventArgs e)
-        {
-            lblTPCountdown.Visible = chkAutoTeleport.Checked;
-            autoTP = 11;
-        }
-
         private void btnConfigKeys_Click(object sender, EventArgs e)
         {
             string input = Microsoft.VisualBasic.Interaction.InputBox("Please enter the names of any keys, seperated by commas, to be broadcasted to all clients when pressed.\n", "KronkBoxer Key Config", Config.Default.keysToSend, -1, -1);
@@ -227,6 +232,12 @@ namespace KronkBoxer
                     if (s.Length > 0)
                         keysToSend.Add((Keys)Enum.Parse(typeof(Keys), s));
             }
+        }
+
+        private void btnEditMacros_Click(object sender, EventArgs e)
+        {
+            Config.Default.macroTPKey = Microsoft.VisualBasic.Interaction.InputBox("Please enter the key you wish to bind to the Teleport Macro", "KronkBoxer Key Config", Config.Default.macroTPKey, -1, -1);
+            Config.Default.Save();
         }
     }
 }

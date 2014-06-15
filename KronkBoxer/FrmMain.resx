@@ -121,6 +121,17 @@
     <value>17, 3</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnEditMacros.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAVhJREFUWEft
+        lDtuhEAQRLktZ+AMXIATkHMFB8gZKSEhGSHaBDw16h7N2j3b3V5kb7BPKglKNTXNt3rzshzHcV4lqrQj
+        lTwrqtaRFl8l2qKMe4EBV6c56MTcaw46Mfeag07MvY+C4zjCv0HLspxN03zAH4Yh+cjE8DfQxyJLRgsG
+        P27Udd2NrKrv+zgADyTBnRBZMlow+HcD1HV97vt+tm37GQMFtN6EFgz+3QC45aXbnqP1JrRg8NMAuOpt
+        29TNgdab0ILBjwPguWPzaZr+ZwB8BXycv5Al0MciS0YLBj9tiqvHMV5CvIwUEeFOiCwZLRj8NAB/ATif
+        5/nvB8A5/wMgHMeQAPpYZMloweD/eO7ruqYhSo8CfSyyZB4FS79i3H728WXg1xwXZKCPRZaMOejE3GsO
+        OjH3moNOzL15UA0bcfflC64WbaEjLX5WVG1HKvmNqO7Nq1JVX5Qv7o3eva62AAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="btnConfigKeys.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAW5JREFUWEft
@@ -149,7 +160,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADE
-        CAAAAk1TRnQBSQFMAgEBAgEAASABAAEgAQABIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CAAAAk1TRnQBSQFMAgEBAgEAATABAAEwAQABIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAASADAAEBAQABCAYAARAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

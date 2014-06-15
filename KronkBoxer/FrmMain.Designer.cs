@@ -35,9 +35,12 @@
             this.splitBottom = new System.Windows.Forms.SplitContainer();
             this.stsBottom = new System.Windows.Forms.StatusStrip();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.btnEditMacros = new System.Windows.Forms.Button();
+            this.tbxMainPlayer = new System.Windows.Forms.TextBox();
+            this.btnFocus = new System.Windows.Forms.Button();
+            this.lblTPCountdown = new System.Windows.Forms.Label();
             this.chkAutoTeleport = new System.Windows.Forms.CheckBox();
             this.btnConfigKeys = new System.Windows.Forms.Button();
-            this.tbxMainPlayer = new System.Windows.Forms.TextBox();
             this.tbxClientPath = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnClientBrowse = new System.Windows.Forms.Button();
@@ -48,8 +51,6 @@
             this.lblPerformance = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.tmrChecker = new System.Windows.Forms.Timer(this.components);
-            this.lblTPCountdown = new System.Windows.Forms.Label();
-            this.btnFocus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -131,11 +132,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeader.BackColor = System.Drawing.Color.Gray;
             this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHeader.Controls.Add(this.btnEditMacros);
+            this.pnlHeader.Controls.Add(this.tbxMainPlayer);
             this.pnlHeader.Controls.Add(this.btnFocus);
             this.pnlHeader.Controls.Add(this.lblTPCountdown);
             this.pnlHeader.Controls.Add(this.chkAutoTeleport);
             this.pnlHeader.Controls.Add(this.btnConfigKeys);
-            this.pnlHeader.Controls.Add(this.tbxMainPlayer);
             this.pnlHeader.Controls.Add(this.tbxClientPath);
             this.pnlHeader.Controls.Add(this.label2);
             this.pnlHeader.Controls.Add(this.btnClientBrowse);
@@ -149,6 +151,61 @@
             this.pnlHeader.Size = new System.Drawing.Size(786, 39);
             this.pnlHeader.TabIndex = 2;
             // 
+            // btnEditMacros
+            // 
+            this.btnEditMacros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditMacros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnEditMacros.FlatAppearance.BorderSize = 0;
+            this.btnEditMacros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditMacros.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditMacros.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnEditMacros.Image = ((System.Drawing.Image)(resources.GetObject("btnEditMacros.Image")));
+            this.btnEditMacros.Location = new System.Drawing.Point(523, 3);
+            this.btnEditMacros.Name = "btnEditMacros";
+            this.btnEditMacros.Size = new System.Drawing.Size(39, 31);
+            this.btnEditMacros.TabIndex = 12;
+            this.btnEditMacros.TabStop = false;
+            this.btnEditMacros.UseVisualStyleBackColor = false;
+            this.btnEditMacros.Click += new System.EventHandler(this.btnEditMacros_Click);
+            // 
+            // tbxMainPlayer
+            // 
+            this.tbxMainPlayer.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxMainPlayer.Location = new System.Drawing.Point(275, 3);
+            this.tbxMainPlayer.Name = "tbxMainPlayer";
+            this.tbxMainPlayer.Size = new System.Drawing.Size(67, 18);
+            this.tbxMainPlayer.TabIndex = 7;
+            this.tbxMainPlayer.TabStop = false;
+            this.tbxMainPlayer.Text = "PlayerName";
+            // 
+            // btnFocus
+            // 
+            this.btnFocus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFocus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(170)))), ((int)(((byte)(60)))));
+            this.btnFocus.FlatAppearance.BorderSize = 0;
+            this.btnFocus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFocus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFocus.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFocus.ImageIndex = 0;
+            this.btnFocus.Location = new System.Drawing.Point(348, 3);
+            this.btnFocus.Name = "btnFocus";
+            this.btnFocus.Size = new System.Drawing.Size(172, 31);
+            this.btnFocus.TabIndex = 11;
+            this.btnFocus.TabStop = false;
+            this.btnFocus.Text = "Click here to broadcast keys";
+            this.btnFocus.UseVisualStyleBackColor = false;
+            // 
+            // lblTPCountdown
+            // 
+            this.lblTPCountdown.AutoSize = true;
+            this.lblTPCountdown.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblTPCountdown.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblTPCountdown.Location = new System.Drawing.Point(161, 19);
+            this.lblTPCountdown.Name = "lblTPCountdown";
+            this.lblTPCountdown.Size = new System.Drawing.Size(126, 15);
+            this.lblTPCountdown.TabIndex = 10;
+            this.lblTPCountdown.Text = "Able to teleport in 10...";
+            // 
             // chkAutoTeleport
             // 
             this.chkAutoTeleport.AutoSize = true;
@@ -159,7 +216,6 @@
             this.chkAutoTeleport.TabIndex = 9;
             this.chkAutoTeleport.Text = "Auto teleport to:";
             this.chkAutoTeleport.UseVisualStyleBackColor = true;
-            this.chkAutoTeleport.CheckedChanged += new System.EventHandler(this.chkAutoTeleport_CheckedChanged);
             // 
             // btnConfigKeys
             // 
@@ -177,16 +233,6 @@
             this.btnConfigKeys.TabStop = false;
             this.btnConfigKeys.UseVisualStyleBackColor = false;
             this.btnConfigKeys.Click += new System.EventHandler(this.btnConfigKeys_Click);
-            // 
-            // tbxMainPlayer
-            // 
-            this.tbxMainPlayer.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxMainPlayer.Location = new System.Drawing.Point(275, 3);
-            this.tbxMainPlayer.Name = "tbxMainPlayer";
-            this.tbxMainPlayer.Size = new System.Drawing.Size(87, 18);
-            this.tbxMainPlayer.TabIndex = 7;
-            this.tbxMainPlayer.TabStop = false;
-            this.tbxMainPlayer.Text = "PlayerName";
             // 
             // tbxClientPath
             // 
@@ -317,35 +363,6 @@
             this.tmrChecker.Interval = 1000;
             this.tmrChecker.Tick += new System.EventHandler(this.tmrChecker_Tick);
             // 
-            // lblTPCountdown
-            // 
-            this.lblTPCountdown.AutoSize = true;
-            this.lblTPCountdown.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblTPCountdown.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblTPCountdown.Location = new System.Drawing.Point(161, 19);
-            this.lblTPCountdown.Name = "lblTPCountdown";
-            this.lblTPCountdown.Size = new System.Drawing.Size(105, 15);
-            this.lblTPCountdown.TabIndex = 10;
-            this.lblTPCountdown.Text = "Teleporting in 10...";
-            this.lblTPCountdown.Visible = false;
-            // 
-            // btnFocus
-            // 
-            this.btnFocus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFocus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(170)))), ((int)(((byte)(60)))));
-            this.btnFocus.FlatAppearance.BorderSize = 0;
-            this.btnFocus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFocus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFocus.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnFocus.ImageIndex = 0;
-            this.btnFocus.Location = new System.Drawing.Point(391, 3);
-            this.btnFocus.Name = "btnFocus";
-            this.btnFocus.Size = new System.Drawing.Size(170, 31);
-            this.btnFocus.TabIndex = 11;
-            this.btnFocus.TabStop = false;
-            this.btnFocus.Text = "Click here to broadcast keys";
-            this.btnFocus.UseVisualStyleBackColor = false;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,6 +420,7 @@
         private System.Windows.Forms.CheckBox chkAutoTeleport;
         private System.Windows.Forms.Label lblTPCountdown;
         private System.Windows.Forms.Button btnFocus;
+        private System.Windows.Forms.Button btnEditMacros;
 
 
     }

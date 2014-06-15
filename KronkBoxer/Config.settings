@@ -14,5 +14,8 @@
     <Setting Name="keysToSend" Type="System.String" Scope="User">
       <Value Profile="(Default)">W,A,S,D,Q,E,R</Value>
     </Setting>
+    <Setting Name="macroTPKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">OemMinus</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

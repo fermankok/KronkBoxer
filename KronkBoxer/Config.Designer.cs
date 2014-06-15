@@ -70,5 +70,17 @@ namespace KronkBoxer {
                 this["keysToSend"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("OemMinus")]
+        public string macroTPKey {
+            get {
+                return ((string)(this["macroTPKey"]));
+            }
+            set {
+                this["macroTPKey"] = value;
+            }
+        }
     }
 }
