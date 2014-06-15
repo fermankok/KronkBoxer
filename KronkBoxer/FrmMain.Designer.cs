@@ -49,6 +49,7 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.tmrChecker = new System.Windows.Forms.Timer(this.components);
             this.lblTPCountdown = new System.Windows.Forms.Label();
+            this.btnFocus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -130,6 +131,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHeader.BackColor = System.Drawing.Color.Gray;
             this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHeader.Controls.Add(this.btnFocus);
             this.pnlHeader.Controls.Add(this.lblTPCountdown);
             this.pnlHeader.Controls.Add(this.chkAutoTeleport);
             this.pnlHeader.Controls.Add(this.btnConfigKeys);
@@ -327,6 +329,23 @@
             this.lblTPCountdown.Text = "Teleporting in 10...";
             this.lblTPCountdown.Visible = false;
             // 
+            // btnFocus
+            // 
+            this.btnFocus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFocus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(170)))), ((int)(((byte)(60)))));
+            this.btnFocus.FlatAppearance.BorderSize = 0;
+            this.btnFocus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFocus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFocus.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFocus.ImageIndex = 0;
+            this.btnFocus.Location = new System.Drawing.Point(391, 3);
+            this.btnFocus.Name = "btnFocus";
+            this.btnFocus.Size = new System.Drawing.Size(170, 31);
+            this.btnFocus.TabIndex = 11;
+            this.btnFocus.TabStop = false;
+            this.btnFocus.Text = "Click here to broadcast keys";
+            this.btnFocus.UseVisualStyleBackColor = false;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,6 +402,7 @@
         private System.Windows.Forms.TextBox tbxMainPlayer;
         private System.Windows.Forms.CheckBox chkAutoTeleport;
         private System.Windows.Forms.Label lblTPCountdown;
+        private System.Windows.Forms.Button btnFocus;
 
 
     }
